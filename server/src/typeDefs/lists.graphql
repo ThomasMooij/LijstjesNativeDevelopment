@@ -1,0 +1,24 @@
+type List {
+  _id: ID!
+  title: String!
+  """ date taken from createdAt property in dd-mm-yyyy format """
+  date: String!
+  items: [Item]
+  user: User!
+}
+
+type Item { 
+  name: String!,
+  price: Float, 
+  userId: ID!, 
+  listId: ID!, 
+}
+
+type Query {
+  getList(id: ID!): List
+  getAllLists(userId: ID!): [List]
+}
+
+type Mutation {
+  createList(title: String!, userId: ID!): List
+}
